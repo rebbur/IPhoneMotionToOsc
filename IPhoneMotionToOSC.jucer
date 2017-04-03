@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="zBhbix" name="IPhoneMotionToOSC" projectType="guiapp" version="1.0.0"
+              bundleIdentifier="com.resolume.IPhoneMotionToOSC" includeBinaryInAppConfig="1"
+              jucerVersion="4.3.0" companyName="Resolume">
+  <MAINGROUP id="V3RvoJ" name="IPhoneMotionToOSC">
+    <GROUP id="{F3C8A25A-0B90-6DBE-4523-314ED683FA5A}" name="Source">
+      <FILE id="tu8sGK" name="MotionViewComponent.cpp" compile="1" resource="0"
+            file="Source/MotionViewComponent.cpp"/>
+      <FILE id="PFBGJW" name="MotionViewComponent.h" compile="0" resource="0"
+            file="Source/MotionViewComponent.h"/>
+      <FILE id="LioY5Y" name="MotionMonitor.h" compile="0" resource="0" file="Source/MotionMonitor.h"/>
+      <FILE id="Se407Z" name="MotionMonitor.mm" compile="1" resource="0"
+            file="Source/MotionMonitor.mm"/>
+      <FILE id="ZAwAdm" name="MainComponent.cpp" compile="1" resource="0"
+            file="Source/MainComponent.cpp"/>
+      <FILE id="oQbJtU" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+      <FILE id="LIpuK4" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+    </GROUP>
+  </MAINGROUP>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="IPhoneGyroToOSC"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="IPhoneGyroToOSC"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../../Res/resolume juce/modules"/>
+        <MODULEPATH id="juce_events" path="../../Res/resolume juce/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../Res/resolume juce/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../Res/resolume juce/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../Res/resolume juce/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../Res/resolume juce/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../../Res/resolume juce/modules"/>
+        <MODULEPATH id="juce_video" path="../../Res/resolume juce/modules"/>
+        <MODULEPATH id="juce_opengl" path="../../Res/resolume juce/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../Res/resolume juce/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../Res/resolume juce/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../Res/resolume juce/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../Res/resolume juce/modules"/>
+        <MODULEPATH id="juce_osc" path="../../Res/resolume juce/modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+    <XCODE_IPHONE targetFolder="Builds/iOS" iosScreenOrientation="portrait">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="IPhoneGyroToOSC"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="IPhoneGyroToOSC"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../../Res/resolume juce/modules"/>
+        <MODULEPATH id="juce_events" path="../../Res/resolume juce/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../Res/resolume juce/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../Res/resolume juce/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../Res/resolume juce/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../Res/resolume juce/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../../Res/resolume juce/modules"/>
+        <MODULEPATH id="juce_video" path="../../Res/resolume juce/modules"/>
+        <MODULEPATH id="juce_opengl" path="../../Res/resolume juce/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../Res/resolume juce/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../Res/resolume juce/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../Res/resolume juce/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../Res/resolume juce/modules"/>
+        <MODULEPATH id="juce_osc" path="../../Res/resolume juce/modules"/>
+      </MODULEPATHS>
+    </XCODE_IPHONE>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_osc" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_video" showAllCode="1" useLocalCopy="0"/>
+  </MODULES>
+  <JUCEOPTIONS/>
+</JUCERPROJECT>
