@@ -91,9 +91,9 @@ class MotionMonitor::Pimpl
 {
 public:
     
-    Pimpl(MotionMonitor* motionMonitor)
+    Pimpl(MotionMonitor* motionMonitor, float rate)
     {
-        coreMotionMonitor = [[CoreMotionMonitor alloc] initWithMotionMonitorAndRate:motionMonitor rate:25.0f];
+        coreMotionMonitor = [[CoreMotionMonitor alloc] initWithMotionMonitorAndRate:motionMonitor rate:rate];
     }
     
     ~Pimpl()
@@ -107,9 +107,9 @@ private:
 };
 
 
-MotionMonitor::MotionMonitor()
+MotionMonitor::MotionMonitor(float rate)
 {
-    pimpl = new Pimpl(this);
+    pimpl = new Pimpl(this, rate);
     
 }
 

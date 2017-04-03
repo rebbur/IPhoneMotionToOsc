@@ -5,6 +5,11 @@
               jucerVersion="4.3.0" companyName="Resolume">
   <MAINGROUP id="V3RvoJ" name="IPhoneMotionToOSC">
     <GROUP id="{F3C8A25A-0B90-6DBE-4523-314ED683FA5A}" name="Source">
+      <GROUP id="{F4253CB5-F0BF-7ED3-2EC3-901652A9D739}" name="network">
+        <FILE id="XzwjmF" name="NetworkUtils.cpp" compile="1" resource="0"
+              file="Source/network/NetworkUtils.cpp"/>
+        <FILE id="Vqveut" name="NetworkUtils.h" compile="0" resource="0" file="Source/network/NetworkUtils.h"/>
+      </GROUP>
       <FILE id="tu8sGK" name="MotionViewComponent.cpp" compile="1" resource="0"
             file="Source/MotionViewComponent.cpp"/>
       <FILE id="PFBGJW" name="MotionViewComponent.h" compile="0" resource="0"
@@ -19,7 +24,7 @@
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
-    <XCODE_IPHONE targetFolder="Builds/iOS" iosScreenOrientation="portrait">
+    <XCODE_IPHONE targetFolder="Builds/iOS" iosScreenOrientation="portrait" extraLinkerFlags="-framework CoreMotion">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="IPhoneGyroToOSC"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="IPhoneGyroToOSC"/>

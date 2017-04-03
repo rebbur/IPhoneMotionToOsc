@@ -18,6 +18,7 @@
 */
 
 //[Headers] You can add your own extra header files here...
+#include "network/NetworkUtils.h"
 //[/Headers]
 
 #include "MotionViewComponent.h"
@@ -118,12 +119,53 @@ MotionViewComponent::MotionViewComponent (MotionMonitor& motionMonitor_)
     angleValueLabel->setColour (TextEditor::textColourId, Colours::black);
     angleValueLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
+    addAndMakeVisible (labelIpAddressValue = new Label ("labelIpAddressValue",
+                                                        TRANS("10.0.1.7")));
+    labelIpAddressValue->setFont (Font (17.20f, Font::plain));
+    labelIpAddressValue->setJustificationType (Justification::centredLeft);
+    labelIpAddressValue->setEditable (true, true, false);
+    labelIpAddressValue->setColour (Label::outlineColourId, Colours::black);
+    labelIpAddressValue->setColour (TextEditor::textColourId, Colours::black);
+    labelIpAddressValue->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+    labelIpAddressValue->addListener (this);
+
+    addAndMakeVisible (labelIpAddress = new Label ("labelIpAddress",
+                                                   TRANS("IP Address:")));
+    labelIpAddress->setFont (Font (15.00f, Font::plain));
+    labelIpAddress->setJustificationType (Justification::centredRight);
+    labelIpAddress->setEditable (false, false, false);
+    labelIpAddress->setColour (TextEditor::textColourId, Colours::black);
+    labelIpAddress->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    addAndMakeVisible (labelPortValue = new Label ("labelPortValue",
+                                                   TRANS("7000")));
+    labelPortValue->setFont (Font (17.20f, Font::plain));
+    labelPortValue->setJustificationType (Justification::centredLeft);
+    labelPortValue->setEditable (true, true, false);
+    labelPortValue->setColour (Label::outlineColourId, Colours::black);
+    labelPortValue->setColour (TextEditor::textColourId, Colours::black);
+    labelPortValue->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+    labelPortValue->addListener (this);
+
+    addAndMakeVisible (labelPort = new Label ("labelPort",
+                                              TRANS("Port:")));
+    labelPort->setFont (Font (15.00f, Font::plain));
+    labelPort->setJustificationType (Justification::centredRight);
+    labelPort->setEditable (false, false, false);
+    labelPort->setColour (TextEditor::textColourId, Colours::black);
+    labelPort->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
 
     //[UserPreSize]
+    IPAddress currentIPAddress = NetworkUtils::getCurrentIPAddress();
+    //make it a broadcast address, broadcast seems slow so we better now use that
+    currentIPAddress.address[3] = 255;
+
     ipAddress = "10.0.1.7";
     port = 7000;
+    oscSender.connect(ipAddress, 7000);
 
-    oscSender.connect("10.0.1.7", 7000);
+    
     //[/UserPreSize]
 
     setSize (600, 400);
@@ -150,6 +192,10 @@ MotionViewComponent::~MotionViewComponent()
     attitudeValueLabel = nullptr;
     angleLabel = nullptr;
     angleValueLabel = nullptr;
+    labelIpAddressValue = nullptr;
+    labelIpAddress = nullptr;
+    labelPortValue = nullptr;
+    labelPort = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -183,13 +229,57 @@ void MotionViewComponent::resized()
     attitudeValueLabel->setBounds (103, 92, getWidth() - 112, 24);
     angleLabel->setBounds (8, 120, 88, 24);
     angleValueLabel->setBounds (103, 120, getWidth() - 112, 24);
+    labelIpAddressValue->setBounds (103, 204, getWidth() - 254, 24);
+    labelIpAddress->setBounds (8, 204, 88, 24);
+    labelPortValue->setBounds (103, 232, getWidth() - 254, 24);
+    labelPort->setBounds (8, 232, 88, 24);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
+}
+
+void MotionViewComponent::labelTextChanged (Label* labelThatHasChanged)
+{
+    //[UserlabelTextChanged_Pre]
+    //[/UserlabelTextChanged_Pre]
+
+    if (labelThatHasChanged == labelIpAddressValue)
+    {
+        //[UserLabelCode_labelIpAddressValue] -- add your label text handling code here..
+        //[/UserLabelCode_labelIpAddressValue]
+    }
+    else if (labelThatHasChanged == labelPortValue)
+    {
+        //[UserLabelCode_labelPortValue] -- add your label text handling code here..
+        try
+        {
+            
+        }
+        catch (...)
+        {
+            
+        }
+        //[/UserLabelCode_labelPortValue]
+    }
+
+    //[UserlabelTextChanged_Post]
+    //[/UserlabelTextChanged_Post]
 }
 
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
+void MotionViewComponent::editorShown (Label* label, TextEditor& editor)
+{
+    if (labelIpAddressValue == label)
+    {
+        
+    }
+    else if (label == labelPortValue)
+    {
+        
+    }
+}
+
 String constructXYZString(const Vector3D<double>& vector)
 {
     return "x: " + String(vector.x, 2) + " y: " + String(vector.y, 2) + " z: " + String(vector.z, 2);
@@ -226,10 +316,10 @@ void MotionViewComponent::run()
                 MotionMonitor::MotionData motionData;
                 if (motionMonitor.getMotionData(motionData))
                 {
-
-
-                    OSCBundle bundle;
                     /*
+                    OSCBundle bundle;
+
+
                     OSCMessage msg_Acceleration("/motion/acceleration",
                                                 (float)motion_Acceleration.x,
                                                 (float)motion_Acceleration.y,
@@ -256,23 +346,14 @@ void MotionViewComponent::run()
                     */
 
 
-                    double angle = radiansToDegrees(motionData.angle);
-
-                    //double resangle = -180.0 + angle;
-
-
-
-
+                    const double angle = radiansToDegrees(motionData.angle);
 
                     OSCMessage msg_Angle("/composition/layers/2/video/effects/transform/rotationz", String("a"), (float)angle);
-
-                    //bundle.addElement(msg_Angle);
-                    oscSender.sendToIPAddress("10.0.1.7", 7000, msg_Angle);
-                    //(msg_Angle);
+                    //oscSender.sendToIPAddress(ipAddress, port, msg_Angle);
+                    oscSender.send(msg_Angle);
 
                     const ScopedLock sl(lockedMotionData);
                     lockedMotionData.motionData = motionData;
-
 
                     newData = true;
 
@@ -300,7 +381,6 @@ void MotionViewComponent::run()
 
                 if (newData)
                     triggerAsyncUpdate();
-
 
             }
 
@@ -378,6 +458,26 @@ BEGIN_JUCER_METADATA
          edBkgCol="0" labelText="" editableSingleClick="0" editableDoubleClick="0"
          focusDiscardsChanges="0" fontname="Default font" fontsize="15"
          bold="0" italic="0" justification="33"/>
+  <LABEL name="labelIpAddressValue" id="d23543b4d8ec0fe5" memberName="labelIpAddressValue"
+         virtualName="" explicitFocusOrder="0" pos="103 204 254M 24" outlineCol="ff000000"
+         edTextCol="ff000000" edBkgCol="0" labelText="10.0.1.7" editableSingleClick="1"
+         editableDoubleClick="1" focusDiscardsChanges="0" fontname="Default font"
+         fontsize="17.199999999999999289" bold="0" italic="0" justification="33"/>
+  <LABEL name="labelIpAddress" id="6c78f2b1e2929b86" memberName="labelIpAddress"
+         virtualName="" explicitFocusOrder="0" pos="8 204 88 24" edTextCol="ff000000"
+         edBkgCol="0" labelText="IP Address:" editableSingleClick="0"
+         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
+         fontsize="15" bold="0" italic="0" justification="34"/>
+  <LABEL name="labelPortValue" id="ac1b29696eb5ad3a" memberName="labelPortValue"
+         virtualName="" explicitFocusOrder="0" pos="103 232 254M 24" outlineCol="ff000000"
+         edTextCol="ff000000" edBkgCol="0" labelText="7000" editableSingleClick="1"
+         editableDoubleClick="1" focusDiscardsChanges="0" fontname="Default font"
+         fontsize="17.199999999999999289" bold="0" italic="0" justification="33"/>
+  <LABEL name="labelPort" id="f99c3be829e2c092" memberName="labelPort"
+         virtualName="" explicitFocusOrder="0" pos="8 232 88 24" edTextCol="ff000000"
+         edBkgCol="0" labelText="Port:" editableSingleClick="0" editableDoubleClick="0"
+         focusDiscardsChanges="0" fontname="Default font" fontsize="15"
+         bold="0" italic="0" justification="34"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

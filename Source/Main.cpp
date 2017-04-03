@@ -28,7 +28,7 @@ public:
     void initialise (const String& commandLine) override
     {
         // This method is where you should put your application's initialisation code..
-        motionMonitor = new MotionMonitor();
+        motionMonitor = new MotionMonitor(40.0f);
         mainWindow = new MainWindow (getApplicationName(), *motionMonitor);
         
         Rectangle<int> userArea = Desktop::getInstance().getDisplays().getMainDisplay().userArea;

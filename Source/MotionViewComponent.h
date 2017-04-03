@@ -22,8 +22,8 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../JuceLibraryCode/JuceHeader.h"
-
 #include "MotionMonitor.h"
+
 //[/Headers]
 
 
@@ -41,7 +41,8 @@
 */
 class MotionViewComponent  : public Component,
                              public Thread,
-                             public AsyncUpdater
+                             public AsyncUpdater,
+                             public LabelListener
 {
 public:
     //==============================================================================
@@ -56,6 +57,8 @@ public:
 
     void paint (Graphics& g) override;
     void resized() override;
+    void labelTextChanged (Label* labelThatHasChanged) override;
+    void editorShown (Label* label, TextEditor& editor) override;
 
 
 
@@ -82,6 +85,10 @@ private:
     ScopedPointer<Label> attitudeValueLabel;
     ScopedPointer<Label> angleLabel;
     ScopedPointer<Label> angleValueLabel;
+    ScopedPointer<Label> labelIpAddressValue;
+    ScopedPointer<Label> labelIpAddress;
+    ScopedPointer<Label> labelPortValue;
+    ScopedPointer<Label> labelPort;
 
 
     //==============================================================================

@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "DA11FB0D3450D5BADC17DE775DDE71B78CA2C7B9",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "4D4F3B7635F69E9D7CBDD1903C89D6FBC8044EF4" : 9223372036854775807,
+    "DA11FB0D3450D5BADC17DE775DDE71B78CA2C7B9" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C51FF52F-5C59-4472-B1E1-BD17B0C04ADB",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "4D4F3B7635F69E9D7CBDD1903C89D6FBC8044EF4" : "Res\/",
+    "DA11FB0D3450D5BADC17DE775DDE71B78CA2C7B9" : "IPhoneMotionToOsc\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "IPhoneMotionToOSC",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Builds\/iOS\/IPhoneMotionToOSC.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/resolume.unfuddle.com\/git\/resolume_res",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4D4F3B7635F69E9D7CBDD1903C89D6FBC8044EF4"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/rebbur\/IPhoneMotionToOsc.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DA11FB0D3450D5BADC17DE775DDE71B78CA2C7B9"
+    }
+  ]
+}

@@ -5,7 +5,7 @@
 class MotionMonitor
 {
 public:
-    MotionMonitor();
+    MotionMonitor(float rate);
     ~MotionMonitor();
 
     struct GyroData
