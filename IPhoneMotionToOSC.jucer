@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="zBhbix" name="IPhoneMotionToOSC" projectType="guiapp" version="1.0.0"
-              bundleIdentifier="com.resolume.IPhoneMotionToOSC" includeBinaryInAppConfig="1"
-              jucerVersion="4.3.0" companyName="Resolume">
+              bundleIdentifier="com.rebbur.IPhoneMotionToOSC" includeBinaryInAppConfig="1"
+              jucerVersion="4.3.0" companyName="Rebbur">
   <MAINGROUP id="V3RvoJ" name="IPhoneMotionToOSC">
     <GROUP id="{F3C8A25A-0B90-6DBE-4523-314ED683FA5A}" name="Source">
       <GROUP id="{974B8D62-225F-C602-D3FF-BA71065EB6BE}" name="settings">
