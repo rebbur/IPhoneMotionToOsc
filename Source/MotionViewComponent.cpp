@@ -387,12 +387,6 @@ void MotionViewComponent::run()
                     OSCMessage msg_Angle("/iphone/motion/angle", (float)angle);
                     bundle.addElement(msg_Angle);
 
-#ifdef JUCE_DEBUG
-                    //send resolume specific message for testing
-                    OSCMessage msg_res_Angle("/composition/layers/2/video/effects/transform/rotationz", String("a"), (float)angle);
-                    bundle.addElement(msg_res_Angle);
-#endif
-
                     oscSender.send(bundle);
 
                     const ScopedLock sl(lockedMotionData);
