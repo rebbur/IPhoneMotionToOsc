@@ -51,14 +51,14 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-    void handleAsyncUpdate() override;
+    void editorShown (Label* label, TextEditor& editor) override;
+        void handleAsyncUpdate() override;
     void run() override;
     //[/UserMethods]
 
     void paint (Graphics& g) override;
     void resized() override;
     void labelTextChanged (Label* labelThatHasChanged) override;
-    void editorShown (Label* label, TextEditor& editor) override;
 
 
 
@@ -69,6 +69,9 @@ private:
     MotionMonitor::LockedGyroData lockedGyroData;
 
     OSCSender oscSender;
+    static String defaultIpAddress;
+    static int defaultPort;
+
     String ipAddress;
     int port;
 

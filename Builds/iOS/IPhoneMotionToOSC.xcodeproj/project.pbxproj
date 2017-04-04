@@ -33,6 +33,7 @@
 		BCB4555746256734E5599BA5 /* juce_video.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3491F6D3668891AAE53C852F /* juce_video.mm */; };
 		BE01DD9692918961DBBE64C0 /* juce_data_structures.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5540EFCC42AAD965D1F62A6A /* juce_data_structures.mm */; };
 		CA1A7262B317F2EDB9A8C346 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966EA07EE03BFE376F9724BA /* UIKit.framework */; };
+		D6359C4D1E94233E00803199 /* UserDefaults.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6359C4C1E94233E00803199 /* UserDefaults.mm */; };
 		DB9EDBF689F531EE9EF10C92 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A5F143CD3BBB7BE64D149B /* CoreGraphics.framework */; };
 		E9578CB187520B667C5C6802 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E2B2E7333D7B1F9FBCCCD7F /* CoreText.framework */; };
 		EAA1FACFAC2DB48104C4F257 /* NetworkUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F79B4CB71DA3CD0BA0154B0 /* NetworkUtils.cpp */; };
@@ -1039,6 +1040,8 @@
 		D4F07620A2D612C87C92C193 /* float.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = float.c; path = "../../../Res/resolume juce/modules/juce_audio_formats/codecs/flac/libFLAC/float.c"; sourceTree = SOURCE_ROOT; };
 		D5392102BAAB8BD24DE4EC0B /* juce_RelativeParallelogram.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_RelativeParallelogram.h; path = "../../../Res/resolume juce/modules/juce_gui_basics/positioning/juce_RelativeParallelogram.h"; sourceTree = SOURCE_ROOT; };
 		D584B183086E72BB959447E8 /* juce_StretchableObjectResizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_StretchableObjectResizer.h; path = "../../../Res/resolume juce/modules/juce_gui_basics/layout/juce_StretchableObjectResizer.h"; sourceTree = SOURCE_ROOT; };
+		D6359C4B1E94233E00803199 /* UserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserDefaults.h; path = ../../Source/settings/UserDefaults.h; sourceTree = "<group>"; };
+		D6359C4C1E94233E00803199 /* UserDefaults.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = UserDefaults.mm; path = ../../Source/settings/UserDefaults.mm; sourceTree = "<group>"; };
 		D645D856406A430BE4B0AF3B /* window_flac.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = window_flac.c; path = "../../../Res/resolume juce/modules/juce_audio_formats/codecs/flac/libFLAC/window_flac.c"; sourceTree = SOURCE_ROOT; };
 		D6CBC3BC29F7360DC1F3C1E6 /* juce_MultiDocumentPanel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_MultiDocumentPanel.h; path = "../../../Res/resolume juce/modules/juce_gui_basics/layout/juce_MultiDocumentPanel.h"; sourceTree = SOURCE_ROOT; };
 		D77D7161198CF7A6C7E3E732 /* juce_LowLevelGraphicsSoftwareRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_LowLevelGraphicsSoftwareRenderer.h; path = "../../../Res/resolume juce/modules/juce_graphics/contexts/juce_LowLevelGraphicsSoftwareRenderer.h"; sourceTree = SOURCE_ROOT; };
@@ -3221,6 +3224,15 @@
 			name = geometry;
 			sourceTree = "<group>";
 		};
+		D6359C481E94230700803199 /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				D6359C4B1E94233E00803199 /* UserDefaults.h */,
+				D6359C4C1E94233E00803199 /* UserDefaults.mm */,
+			);
+			name = settings;
+			sourceTree = "<group>";
+		};
 		D6BE0C6E65EB79269F5D0584 /* lookandfeel */ = {
 			isa = PBXGroup;
 			children = (
@@ -3308,6 +3320,7 @@
 		F13A3BD243447B8E07070AB7 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				D6359C481E94230700803199 /* settings */,
 				C183ABB60BEB30F926C26572 /* network */,
 				072969543F4C70174022F043 /* MotionViewComponent.cpp */,
 				A0BCD90FCC874D1996D0B692 /* MotionViewComponent.h */,
@@ -3513,6 +3526,7 @@
 				9E96DB134398F0662810F296 /* juce_gui_extra.mm in Sources */,
 				7FEFC2A517A2E228E82F7A8C /* juce_opengl.mm in Sources */,
 				897B6AFABEBD8E9C62C1C869 /* juce_osc.cpp in Sources */,
+				D6359C4D1E94233E00803199 /* UserDefaults.mm in Sources */,
 				BCB4555746256734E5599BA5 /* juce_video.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

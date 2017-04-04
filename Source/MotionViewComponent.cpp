@@ -19,6 +19,7 @@
 
 //[Headers] You can add your own extra header files here...
 #include "network/NetworkUtils.h"
+#include "settings/UserDefaults.h"
 //[/Headers]
 
 #include "MotionViewComponent.h"
@@ -29,6 +30,9 @@
 
 
 //[NamespaceStart]
+String MotionViewComponent::defaultIpAddress = "10.0.1.7";
+int MotionViewComponent::defaultPort = 7000;
+
 //[/NamespaceStart]
 
 //==============================================================================
@@ -157,15 +161,24 @@ MotionViewComponent::MotionViewComponent (MotionMonitor& motionMonitor_)
 
 
     //[UserPreSize]
-    IPAddress currentIPAddress = NetworkUtils::getCurrentIPAddress();
-    //make it a broadcast address, broadcast seems slow so we better now use that
-    currentIPAddress.address[3] = 255;
-
-    ipAddress = "10.0.1.7";
-    port = 7000;
-    oscSender.connect(ipAddress, 7000);
-
+    //default settings
+    ipAddress = MotionViewComponent::defaultIpAddress;
+    port = MotionViewComponent::defaultPort;
     
+    //load settings if present
+    UserDefaults::loadString("IpAddress", ipAddress);
+    long port_ = 0;
+    UserDefaults::loadLong("Port", port_);
+    if (port_ != 0)
+        port = static_cast<int>(port_);
+
+
+    labelIpAddressValue->setText(ipAddress, dontSendNotification);
+    labelPortValue->setText(String(port), dontSendNotification);
+
+    //connect
+    
+    oscSender.connect(ipAddress, port);
     //[/UserPreSize]
 
     setSize (600, 400);
@@ -229,9 +242,9 @@ void MotionViewComponent::resized()
     attitudeValueLabel->setBounds (103, 92, getWidth() - 112, 24);
     angleLabel->setBounds (8, 120, 88, 24);
     angleValueLabel->setBounds (103, 120, getWidth() - 112, 24);
-    labelIpAddressValue->setBounds (103, 204, getWidth() - 254, 24);
+    labelIpAddressValue->setBounds (103, 204, 200, 24);
     labelIpAddress->setBounds (8, 204, 88, 24);
-    labelPortValue->setBounds (103, 232, getWidth() - 254, 24);
+    labelPortValue->setBounds (103, 232, 200, 24);
     labelPort->setBounds (8, 232, 88, 24);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
@@ -240,11 +253,29 @@ void MotionViewComponent::resized()
 void MotionViewComponent::labelTextChanged (Label* labelThatHasChanged)
 {
     //[UserlabelTextChanged_Pre]
+    oscSender.disconnect();
     //[/UserlabelTextChanged_Pre]
 
     if (labelThatHasChanged == labelIpAddressValue)
     {
         //[UserLabelCode_labelIpAddressValue] -- add your label text handling code here..
+        try
+        {
+            String address = labelIpAddressValue->getText();
+            ipAddress = address;
+        }
+        catch (...)
+        {
+            ipAddress = MotionViewComponent::defaultIpAddress;
+        }
+
+        if (ipAddress.trim().isEmpty())
+            ipAddress = MotionViewComponent::defaultIpAddress;
+
+        labelIpAddressValue->setText(ipAddress, dontSendNotification);
+        
+        //store ipaddress setting
+        UserDefaults::storeString("IpAddress", ipAddress);
         //[/UserLabelCode_labelIpAddressValue]
     }
     else if (labelThatHasChanged == labelPortValue)
@@ -252,16 +283,26 @@ void MotionViewComponent::labelTextChanged (Label* labelThatHasChanged)
         //[UserLabelCode_labelPortValue] -- add your label text handling code here..
         try
         {
-            
+            int p = labelPortValue->getText().getIntValue();
+            port = p;
         }
         catch (...)
         {
-            
+            port = MotionViewComponent::defaultPort;
+
         }
+        if (port == 0)
+            port = MotionViewComponent::defaultPort;
+
+        labelPortValue->setText(String(port), dontSendNotification);
+        
+        //store port setting
+        UserDefaults::storeLong("Port", port);
         //[/UserLabelCode_labelPortValue]
     }
 
     //[UserlabelTextChanged_Post]
+    oscSender.connect(ipAddress, port);
     //[/UserlabelTextChanged_Post]
 }
 
@@ -272,11 +313,11 @@ void MotionViewComponent::editorShown (Label* label, TextEditor& editor)
 {
     if (labelIpAddressValue == label)
     {
-        
+        editor.setInputFilter(new TextEditor::LengthAndCharacterRestriction(15, ".012345678"), true);
     }
     else if (label == labelPortValue)
     {
-        
+        editor.setInputFilter(new TextEditor::LengthAndCharacterRestriction(6, "012345678"), true);
     }
 }
 
@@ -311,74 +352,74 @@ void MotionViewComponent::run()
     while (!threadShouldExit())
     {
         {
+
             {
                 bool newData = false;
                 MotionMonitor::MotionData motionData;
                 if (motionMonitor.getMotionData(motionData))
                 {
-                    /*
                     OSCBundle bundle;
-
-
-                    OSCMessage msg_Acceleration("/motion/acceleration",
-                                                (float)motion_Acceleration.x,
-                                                (float)motion_Acceleration.y,
-                                                (float)motion_Acceleration.z);
+                    OSCMessage msg_Acceleration("/iphone/motion/acceleration",
+                                                (float)motionData.acceleration.x,
+                                                (float)motionData.acceleration.y,
+                                                (float)motionData.acceleration.z);
                     bundle.addElement(msg_Acceleration);
 
-                    OSCMessage msg_Gravity("/motion/gravity",
-                                           (float)motion_Gravity.x,
-                                           (float)motion_Gravity.y,
-                                           (float)motion_Gravity.z);
+                    OSCMessage msg_Gravity("/iphone/motion/gravity",
+                                           (float)motionData.gravity.x,
+                                           (float)motionData.gravity.y,
+                                           (float)motionData.gravity.z);
                     bundle.addElement(msg_Gravity);
 
-                    OSCMessage msg_Rotation("/motion/rotation",
-                                            (float)motion_Rotation.x,
-                                            (float)motion_Rotation.y,
-                                            (float)motion_Rotation.z);
+                    OSCMessage msg_Rotation("/iphone/motion/rotation",
+                                            (float)motionData.rotation.x,
+                                            (float)motionData.rotation.y,
+                                            (float)motionData.rotation.z);
                     bundle.addElement(msg_Rotation);
 
-                    OSCMessage msg_Attitude("/motion/attitude",
-                                            (float)motion_Attitude.x,
-                                            (float)motion_Attitude.y,
-                                            (float)motion_Attitude.z);
+                    OSCMessage msg_Attitude("/iphone/motion/attitude",
+                                            (float)motionData.attitude.x,
+                                            (float)motionData.attitude.y,
+                                            (float)motionData.attitude.z);
                     bundle.addElement(msg_Attitude);
-                    */
-
 
                     const double angle = radiansToDegrees(motionData.angle);
+                    OSCMessage msg_Angle("/iphone/motion/angle", (float)angle);
+                    bundle.addElement(msg_Angle);
 
-                    OSCMessage msg_Angle("/composition/layers/2/video/effects/transform/rotationz", String("a"), (float)angle);
-                    //oscSender.sendToIPAddress(ipAddress, port, msg_Angle);
-                    oscSender.send(msg_Angle);
+#ifdef JUCE_DEBUG
+                    //send resolume specific message so we can
+                    OSCMessage msg_res_Angle("/composition/layers/2/video/effects/transform/rotationz", String("a"), (float)angle);
+                    bundle.addElement(msg_res_Angle);
+#endif
+
+                    oscSender.send(bundle);
 
                     const ScopedLock sl(lockedMotionData);
                     lockedMotionData.motionData = motionData;
 
                     newData = true;
-
-
                 }
 
+                /*
                 MotionMonitor::GyroData gyroData;
                 if (motionMonitor.getGyroData(gyroData))
                 {
-                    /*
-                     OSCBundle bundle;
-                     OSCMessage msg_RotationRate("/gyro/rotationrate",
-                     (float)gyro_RotationRate.x,
-                     (float)gyro_RotationRate.y,
-                     (float)gyro_RotationRate.z);
-                     bundle.addElement(msg_RotationRate);
 
-                     sender.sendToIPAddress (ipAddress, port, bundle);
-                     */
+                    OSCBundle bundle;
+                    OSCMessage msg_RotationRate("/iphone/gyro/rotationrate",
+                                                (float)gyroData.rotationRate.x,
+                                                (float)gyroData.rotationRate.y,
+                                                (float)gyroData.rotationRate.z);
+                    bundle.addElement(msg_RotationRate);
+                    oscSender.send(bundle);
+
                     const ScopedLock sl(lockedGyroData);
                     lockedGyroData.gyroData = gyroData;
 
                     newData = true;
                 }
-
+                */
                 if (newData)
                     triggerAsyncUpdate();
 
@@ -459,7 +500,7 @@ BEGIN_JUCER_METADATA
          focusDiscardsChanges="0" fontname="Default font" fontsize="15"
          bold="0" italic="0" justification="33"/>
   <LABEL name="labelIpAddressValue" id="d23543b4d8ec0fe5" memberName="labelIpAddressValue"
-         virtualName="" explicitFocusOrder="0" pos="103 204 254M 24" outlineCol="ff000000"
+         virtualName="" explicitFocusOrder="0" pos="103 204 200 24" outlineCol="ff000000"
          edTextCol="ff000000" edBkgCol="0" labelText="10.0.1.7" editableSingleClick="1"
          editableDoubleClick="1" focusDiscardsChanges="0" fontname="Default font"
          fontsize="17.199999999999999289" bold="0" italic="0" justification="33"/>
@@ -469,7 +510,7 @@ BEGIN_JUCER_METADATA
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15" bold="0" italic="0" justification="34"/>
   <LABEL name="labelPortValue" id="ac1b29696eb5ad3a" memberName="labelPortValue"
-         virtualName="" explicitFocusOrder="0" pos="103 232 254M 24" outlineCol="ff000000"
+         virtualName="" explicitFocusOrder="0" pos="103 232 200 24" outlineCol="ff000000"
          edTextCol="ff000000" edBkgCol="0" labelText="7000" editableSingleClick="1"
          editableDoubleClick="1" focusDiscardsChanges="0" fontname="Default font"
          fontsize="17.199999999999999289" bold="0" italic="0" justification="33"/>

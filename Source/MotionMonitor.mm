@@ -54,17 +54,17 @@
             NSLog(@"DeviceMotion not Available!");
         }
         
+        /*
         if([motionManager isGyroAvailable])
         {
-            /* Start the gyroscope if it is not active already */
+            // Start the gyroscope if it is not active already
             if([motionManager isGyroActive] == NO)
             {
-                /* Update us 2 times a second */
                 [motionManager setGyroUpdateInterval:1.0f / rate];
                 
-                /* Add on a handler block object */
+                // Add on a handler block object
                 
-                /* Receive the gyroscope data on this block */
+                // Receive the gyroscope data on this block
                 [motionManager startGyroUpdatesToQueue:[NSOperationQueue mainQueue]
                                                 withHandler:^(CMGyroData *gyroData, NSError *error)
                  {                     
@@ -80,6 +80,8 @@
         {
             NSLog(@"Gyroscope not Available!");
         }
+        */
+        
     }
     return self;
 }
@@ -117,7 +119,6 @@ MotionMonitor::~MotionMonitor()
 {
     
 }
-
 
 void MotionMonitor::updateMotion(MotionData motionData)
 {
