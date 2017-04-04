@@ -5,6 +5,10 @@
               jucerVersion="4.3.0" companyName="Resolume">
   <MAINGROUP id="V3RvoJ" name="IPhoneMotionToOSC">
     <GROUP id="{F3C8A25A-0B90-6DBE-4523-314ED683FA5A}" name="Source">
+      <GROUP id="{974B8D62-225F-C602-D3FF-BA71065EB6BE}" name="settings">
+        <FILE id="Oe9HkH" name="UserDefaults.h" compile="0" resource="0" file="Source/settings/UserDefaults.h"/>
+        <FILE id="Y38pbZ" name="UserDefaults.mm" compile="1" resource="0" file="Source/settings/UserDefaults.mm"/>
+      </GROUP>
       <GROUP id="{F4253CB5-F0BF-7ED3-2EC3-901652A9D739}" name="network">
         <FILE id="XzwjmF" name="NetworkUtils.cpp" compile="1" resource="0"
               file="Source/network/NetworkUtils.cpp"/>

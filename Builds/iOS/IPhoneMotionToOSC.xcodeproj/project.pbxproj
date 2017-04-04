@@ -16,6 +16,7 @@
 		3D84F777684DE4B9B05AE40E /* MotionViewComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 072969543F4C70174022F043 /* MotionViewComponent.cpp */; };
 		400127CFAA02301013E8AC4F /* MotionMonitor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7112EA9F3B0BF81F3EB55E26 /* MotionMonitor.mm */; };
 		42141A45E7153D9A00F125B7 /* juce_audio_basics.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AFE509DA64EF5E9026C2FBC /* juce_audio_basics.mm */; };
+		4CFF7CAC2AFE1658C97473C6 /* UserDefaults.mm in Sources */ = {isa = PBXBuildFile; fileRef = 089C3F26829EB9FC1E36FC2E /* UserDefaults.mm */; };
 		4DDD27013DC344BB0C123D95 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DA498C932D4CABAE48AE7FC /* Main.cpp */; };
 		515C1B97D9A4BB818C8CA684 /* juce_audio_devices.mm in Sources */ = {isa = PBXBuildFile; fileRef = EB845A9C0F3BB98398630550 /* juce_audio_devices.mm */; };
 		52F577A3531FEB36DA0D04CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2012408763339D57F7AA46E /* Foundation.framework */; };
@@ -33,7 +34,6 @@
 		BCB4555746256734E5599BA5 /* juce_video.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3491F6D3668891AAE53C852F /* juce_video.mm */; };
 		BE01DD9692918961DBBE64C0 /* juce_data_structures.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5540EFCC42AAD965D1F62A6A /* juce_data_structures.mm */; };
 		CA1A7262B317F2EDB9A8C346 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966EA07EE03BFE376F9724BA /* UIKit.framework */; };
-		D6359C4D1E94233E00803199 /* UserDefaults.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6359C4C1E94233E00803199 /* UserDefaults.mm */; };
 		DB9EDBF689F531EE9EF10C92 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A5F143CD3BBB7BE64D149B /* CoreGraphics.framework */; };
 		E9578CB187520B667C5C6802 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E2B2E7333D7B1F9FBCCCD7F /* CoreText.framework */; };
 		EAA1FACFAC2DB48104C4F257 /* NetworkUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F79B4CB71DA3CD0BA0154B0 /* NetworkUtils.cpp */; };
@@ -76,6 +76,7 @@
 		0842BDF281B3A7D0C6FD19AE /* juce_VSTInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_VSTInterface.h; path = "../../../Res/resolume juce/modules/juce_audio_processors/format_types/juce_VSTInterface.h"; sourceTree = SOURCE_ROOT; };
 		0859A35B14C916901CBC3DC3 /* juce_VSTCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_VSTCommon.h; path = "../../../Res/resolume juce/modules/juce_audio_processors/format_types/juce_VSTCommon.h"; sourceTree = SOURCE_ROOT; };
 		0882524AB5BA5FEF50C5CA27 /* juce_AudioProcessor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_AudioProcessor.cpp; path = "../../../Res/resolume juce/modules/juce_audio_processors/processors/juce_AudioProcessor.cpp"; sourceTree = SOURCE_ROOT; };
+		089C3F26829EB9FC1E36FC2E /* UserDefaults.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = UserDefaults.mm; path = ../../Source/settings/UserDefaults.mm; sourceTree = SOURCE_ROOT; };
 		08A9BE65664C9D517437E19A /* juce_DropShadower.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_DropShadower.cpp; path = "../../../Res/resolume juce/modules/juce_gui_basics/misc/juce_DropShadower.cpp"; sourceTree = SOURCE_ROOT; };
 		08CDF597F9BC72A56A53EFDB /* config_types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = config_types.h; path = "../../../Res/resolume juce/modules/juce_audio_formats/codecs/oggvorbis/config_types.h"; sourceTree = SOURCE_ROOT; };
 		090D8BFE6BFFD71908376635 /* juce_mac_CameraDevice.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = juce_mac_CameraDevice.mm; path = "../../../Res/resolume juce/modules/juce_video/native/juce_mac_CameraDevice.mm"; sourceTree = SOURCE_ROOT; };
@@ -107,6 +108,7 @@
 		1002D0B5C61D575B892CCF38 /* juce_mac_CarbonViewWrapperComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_mac_CarbonViewWrapperComponent.h; path = "../../../Res/resolume juce/modules/juce_gui_extra/native/juce_mac_CarbonViewWrapperComponent.h"; sourceTree = SOURCE_ROOT; };
 		1055EF6749D92BB66D87A989 /* juce_osx_MessageQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_osx_MessageQueue.h; path = "../../../Res/resolume juce/modules/juce_events/native/juce_osx_MessageQueue.h"; sourceTree = SOURCE_ROOT; };
 		107D6A82C2114609DE448220 /* juce_CaretComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_CaretComponent.h; path = "../../../Res/resolume juce/modules/juce_gui_basics/keyboard/juce_CaretComponent.h"; sourceTree = SOURCE_ROOT; };
+		107E8E4F837A53F29A4C8583 /* UserDefaults.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UserDefaults.h; path = ../../Source/settings/UserDefaults.h; sourceTree = SOURCE_ROOT; };
 		10B54F9690B5C6435D1CB9AB /* juce_SpinLock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_SpinLock.h; path = "../../../Res/resolume juce/modules/juce_core/threads/juce_SpinLock.h"; sourceTree = SOURCE_ROOT; };
 		1168EF2253A0091BE01E9E73 /* juce_SHA256.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_SHA256.cpp; path = "../../../Res/resolume juce/modules/juce_cryptography/hashing/juce_SHA256.cpp"; sourceTree = SOURCE_ROOT; };
 		125B0FEF091DC3E8888A8611 /* juce_mac_AppleRemote.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = juce_mac_AppleRemote.mm; path = "../../../Res/resolume juce/modules/juce_gui_extra/native/juce_mac_AppleRemote.mm"; sourceTree = SOURCE_ROOT; };
@@ -1040,8 +1042,6 @@
 		D4F07620A2D612C87C92C193 /* float.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = float.c; path = "../../../Res/resolume juce/modules/juce_audio_formats/codecs/flac/libFLAC/float.c"; sourceTree = SOURCE_ROOT; };
 		D5392102BAAB8BD24DE4EC0B /* juce_RelativeParallelogram.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_RelativeParallelogram.h; path = "../../../Res/resolume juce/modules/juce_gui_basics/positioning/juce_RelativeParallelogram.h"; sourceTree = SOURCE_ROOT; };
 		D584B183086E72BB959447E8 /* juce_StretchableObjectResizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_StretchableObjectResizer.h; path = "../../../Res/resolume juce/modules/juce_gui_basics/layout/juce_StretchableObjectResizer.h"; sourceTree = SOURCE_ROOT; };
-		D6359C4B1E94233E00803199 /* UserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserDefaults.h; path = ../../Source/settings/UserDefaults.h; sourceTree = "<group>"; };
-		D6359C4C1E94233E00803199 /* UserDefaults.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = UserDefaults.mm; path = ../../Source/settings/UserDefaults.mm; sourceTree = "<group>"; };
 		D645D856406A430BE4B0AF3B /* window_flac.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = window_flac.c; path = "../../../Res/resolume juce/modules/juce_audio_formats/codecs/flac/libFLAC/window_flac.c"; sourceTree = SOURCE_ROOT; };
 		D6CBC3BC29F7360DC1F3C1E6 /* juce_MultiDocumentPanel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_MultiDocumentPanel.h; path = "../../../Res/resolume juce/modules/juce_gui_basics/layout/juce_MultiDocumentPanel.h"; sourceTree = SOURCE_ROOT; };
 		D77D7161198CF7A6C7E3E732 /* juce_LowLevelGraphicsSoftwareRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_LowLevelGraphicsSoftwareRenderer.h; path = "../../../Res/resolume juce/modules/juce_graphics/contexts/juce_LowLevelGraphicsSoftwareRenderer.h"; sourceTree = SOURCE_ROOT; };
@@ -3056,6 +3056,15 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		B989C7C5EDD9A5C52E1A0E78 /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				107E8E4F837A53F29A4C8583 /* UserDefaults.h */,
+				089C3F26829EB9FC1E36FC2E /* UserDefaults.mm */,
+			);
+			name = settings;
+			sourceTree = "<group>";
+		};
 		BC94E9E5D2B36841365867F1 /* unit_tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -3224,15 +3233,6 @@
 			name = geometry;
 			sourceTree = "<group>";
 		};
-		D6359C481E94230700803199 /* settings */ = {
-			isa = PBXGroup;
-			children = (
-				D6359C4B1E94233E00803199 /* UserDefaults.h */,
-				D6359C4C1E94233E00803199 /* UserDefaults.mm */,
-			);
-			name = settings;
-			sourceTree = "<group>";
-		};
 		D6BE0C6E65EB79269F5D0584 /* lookandfeel */ = {
 			isa = PBXGroup;
 			children = (
@@ -3320,7 +3320,7 @@
 		F13A3BD243447B8E07070AB7 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				D6359C481E94230700803199 /* settings */,
+				B989C7C5EDD9A5C52E1A0E78 /* settings */,
 				C183ABB60BEB30F926C26572 /* network */,
 				072969543F4C70174022F043 /* MotionViewComponent.cpp */,
 				A0BCD90FCC874D1996D0B692 /* MotionViewComponent.h */,
@@ -3508,6 +3508,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CFF7CAC2AFE1658C97473C6 /* UserDefaults.mm in Sources */,
 				EAA1FACFAC2DB48104C4F257 /* NetworkUtils.cpp in Sources */,
 				3D84F777684DE4B9B05AE40E /* MotionViewComponent.cpp in Sources */,
 				400127CFAA02301013E8AC4F /* MotionMonitor.mm in Sources */,
@@ -3526,7 +3527,6 @@
 				9E96DB134398F0662810F296 /* juce_gui_extra.mm in Sources */,
 				7FEFC2A517A2E228E82F7A8C /* juce_opengl.mm in Sources */,
 				897B6AFABEBD8E9C62C1C869 /* juce_osc.cpp in Sources */,
-				D6359C4D1E94233E00803199 /* UserDefaults.mm in Sources */,
 				BCB4555746256734E5599BA5 /* juce_video.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3552,7 +3552,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = IPhoneMotionToOSC;
+				PRODUCT_NAME = IPhoneGyroToOSC;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "-Wreorder";
@@ -3576,7 +3576,7 @@
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				PRODUCT_NAME = IPhoneMotionToOSC;
+				PRODUCT_NAME = IPhoneGyroToOSC;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "-Wreorder";
