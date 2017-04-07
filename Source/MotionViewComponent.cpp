@@ -313,11 +313,11 @@ void MotionViewComponent::editorShown (Label* label, TextEditor& editor)
 {
     if (labelIpAddressValue == label)
     {
-        editor.setInputFilter(new TextEditor::LengthAndCharacterRestriction(15, ".012345678"), true);
+        editor.setInputFilter(new TextEditor::LengthAndCharacterRestriction(15, ".0123456789"), true);
     }
     else if (label == labelPortValue)
     {
-        editor.setInputFilter(new TextEditor::LengthAndCharacterRestriction(6, "012345678"), true);
+        editor.setInputFilter(new TextEditor::LengthAndCharacterRestriction(6, "0123456789"), true);
     }
 }
 
